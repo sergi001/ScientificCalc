@@ -1,65 +1,77 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>This is for my friends!</title>
-<link rel="stylesheet" href="style.css">
-<!-- BTW PEEPS, I FOUND A COUPLE BUGS AND PROBABLY WILL FIX THEM MID MARCH HAHA BECAUSE IT'S 1ST WEEK OF SCHOOL -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+   
+     
 </head>
-<body>
-<p id=myPara></p>
-<p id=myAns>0</p>
-<table>
-    <tr>
-    <td colspan=5><input id=result readonly></td>
-    </tr>
-        
-    <tr>
-    <td onclick="shiftFn(1)" id=shiftBtn>Shift</td>
-    <td onclick="trigo('sin')">sin</td>
-    <td onclick="trigo('cos')">cos</td>
-    <td onclick="trigo('tan')">tan</td>
-    <td onclick="input('!')">!</td>
-    </tr>
-    
-    <tr>
-    <td onclick="input('^(')">^</td>
-    <td onclick="sqrt()">sqrt</td>
-    <td onclick="leftParen()">(</td>
-    <td onclick="input(')')">)</td>
-    <td onclick="log(1)">log</td>
-    </tr>
-    
-    <tr>
-    <td onclick="input('7')">7</td>
-    <td onclick="input('8')">8</td>
-    <td onclick="input('9')">9</td>
-    <td onclick="del()">DEL</td>
-    <td onclick="ac()">AC</td>
-    </tr>
-    
-    <tr>
-    <td onclick="input('4')">4</td>
-    <td onclick="input('5')">5</td>
-    <td onclick="input('6')">6</td>
-    <td onclick="multOrDiv('mult')">&#x00D7;</td>
-    <td onclick="multOrDiv('div')">&#x00F7;</td>
-    </tr>
-    
-    <tr>
-    <td onclick="input('1')">1</td>
-    <td onclick="input('2')">2</td>
-    <td onclick="input('3')">3</td>
-    <td onclick="input('+')">+</td>
-    <td onclick="input('-')">-</td>
-    </tr>
-    
-    <tr>
-    <td onclick="input('0')">0</td>
-    <td onclick="input('.')">.</td>
-    <td onclick="piOrE('pi')">&#x03C0;</td>
-    <td onclick="ans()">Ans</td>
-    <td onclick="equal()">=</td>
-    </tr>
-</table>
-<script src="index.js"></script>
+<body class="container">
+    <div class="calculator">
+        <div class = title > 
+            Basic Calculator 
+           </div> 
+           <button id="theme">Themes</button>
+                <form name="form"> 
+                    <table>
+                    <!--Display  the values on the screen'Textfield'-->
+                    <tr> 
+                        <td colspan=6><input name="display" class="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"> </td> 
+                    </tr> 
+                    <tr>
+                        <td><input class="button" type="button" onclick="insert(7)" value="7" name=""></td>
+                        <td><input class="button" type="button" onclick="insert(8)" value="8" name=""></td>
+                        <td><input class="button" type="button" onclick="insert(9)" value="9" name=""></td>
+                        <td><input class="button" type="button" onclick="insert('+')" value="+" name=""></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" onclick="insert(4)" value="4" name=""></td>
+                        <td><input class="button" type="button" onclick="insert(5)" value="5" name=""></td>
+                        <td><input class="button" type="button" onclick="insert(6)" value="6" name=""></td>
+                        <td><input class="button" type="button" onclick="insert('-')" value="-" name=""></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" onclick="insert(1)" value="1" name=""></td>
+                        <td><input class="button" type="button" onclick="insert(2)" value="2" name=""></td>
+                        <td><input class="button" type="button" onclick="insert(3)" value="3" name=""></td>
+                        <td><input class="button" type="button" onclick="insert('*')" value="x" name=""></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" onclick="insert('.')" value="." name=""></td>
+                        <td><input class="button" type="button" onclick="insert(0)" value="0" name=""></td>
+                        <td><input class="button" type="button" onclick="back()" value="DEL" name=""></td>
+                        <td><input class="button" type="button" onclick="insert('/')" value="/" name=""></td>
+                    </tr>
+                    <tr >
+                        <td><input class="button" type="button" onclick="clean()" value="C" name=""></td>
+                        <td colspan=4><input class="button" type="button" onclick="equal()" value="=" name=""></td>
+                    </tr>
+                    </table>
+                    </form>
+        </div>
+    </div>
+    <script src="index.js"></script>
+    <script >
+        //Insertion of operations and operands
+		function insert(num){
+			form.display.value =form.display.value+num;
+		}
+        //To evaluate the inserted values
+		function equal(){
+			exp=form.display.value;
+			form.display.value=eval(exp);
+		}
+        //Clear the display
+		function clean(){
+			form.display.value="";
+		}
+        //Removes the most recent added value in the display
+		function back(){
+			exp = form.display.value;
+			form.display.value=exp.substring(0,exp.length-1);
+        }
+	</script>
 </body>
 </html>
